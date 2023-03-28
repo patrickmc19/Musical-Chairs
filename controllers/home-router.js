@@ -1,15 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const withAuth = require("../util/withAuth");
 
-// use withAuth middleware to redirect from protected routes.
-// const withAuth = require("../util/withAuth");
-
-// example of a protected route
-// router.get("/users-only", withAuth, (req, res) => {
-//   // ...
-// });
-
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     let user;
     if (req.session.isLoggedIn) {
@@ -23,6 +16,69 @@ router.get('/', async (req, res) => {
       isLoggedIn: req.session.isLoggedIn,
       user,
     });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.get('/user', withAuth, async (req, res) => {
+  try{
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.get('/user/:id', withAuth, async (req, res) => {
+  try{
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.put('/post/:id', withAuth, async (req, res) => {
+  try{
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.get('/post', withAuth, async (req, res) => {
+  try{
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.post('/post', withAuth, async (req, res) => {
+  try{
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.get('/post/:id', withAuth, async (req, res) => {
+  try{
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.put('/post/:id', withAuth, async (req, res) => {
+  try{
+
   } catch (error) {
     console.error(error);
     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
