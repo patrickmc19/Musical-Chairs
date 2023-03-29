@@ -24,7 +24,8 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/user', withAuth, async (req, res) => {
   try{
-
+    // Get all users, sorted by name
+    // create user.handlebars page to render when this route is hit.
   } catch (error) {
     console.error(error);
     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
