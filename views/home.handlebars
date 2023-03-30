@@ -1,5 +1,10 @@
 <h1>Home</h1>
 {{#if isLoggedIn}}
+  <header>
+    <form id="form">
+      <input type="text" id="search" placeholder="Search" class="search" />
+    </form>
+  </header>
   <h2>Welcome, {{user.username}}!</h2>
   <p>Your id is <strong>{{user.id}}</strong>.</p>
 {{/if}}
@@ -8,5 +13,5 @@
   sequi quis iure voluptatibus doloremque dicta optio maiores!</p>
 {{#unless isLoggedIn}}
   <br />
-  <a class='btn' href='/signup'>Sign Up</a>
+  <a class="btn" href="/signup">Sign Up</a>
 {{/unless}}
