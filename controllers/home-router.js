@@ -23,7 +23,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/user', withAuth, async (req, res) => {
-  try{
+  try {
     // Get all users, sorted by name
     // create user.handlebars page to render when this route is hit.
   } catch (error) {
@@ -33,7 +33,7 @@ router.get('/user', withAuth, async (req, res) => {
 });
 
 router.get('/user/:id', withAuth, async (req, res) => {
-  try{
+  try {
 
   } catch (error) {
     console.error(error);
@@ -42,8 +42,7 @@ router.get('/user/:id', withAuth, async (req, res) => {
 });
 
 router.put('/post/:id', withAuth, async (req, res) => {
-  try{
-
+  try {
   } catch (error) {
     console.error(error);
     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
@@ -51,7 +50,7 @@ router.put('/post/:id', withAuth, async (req, res) => {
 });
 
 router.get('/post', withAuth, async (req, res) => {
-  try{
+  try {
 
   } catch (error) {
     console.error(error);
@@ -60,7 +59,7 @@ router.get('/post', withAuth, async (req, res) => {
 });
 
 router.post('/post', withAuth, async (req, res) => {
-  try{
+  try {
 
   } catch (error) {
     console.error(error);
@@ -69,7 +68,7 @@ router.post('/post', withAuth, async (req, res) => {
 });
 
 router.get('/post/:id', withAuth, async (req, res) => {
-  try{
+  try {
 
   } catch (error) {
     console.error(error);
@@ -78,7 +77,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
 });
 
 router.put('/post/:id', withAuth, async (req, res) => {
-  try{
+  try {
 
   } catch (error) {
     console.error(error);
