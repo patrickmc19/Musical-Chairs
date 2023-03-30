@@ -3,3 +3,11 @@ module.exports = {
   // Example:
   // json: object => JSON.stringify(object, null, 4),
 };
+
+// make helper for blogpost timestamp
+module.exports = {
+  format_date: (date) => {
+      // Format date as MM/DD/YYYY
+      return date.toLocaleDateString();
+  }
+};
