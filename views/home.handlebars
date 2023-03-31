@@ -1,17 +1,22 @@
-<h1>Home</h1>
+<h1>Musical Chairs</h1>
 {{#if isLoggedIn}}
-  <header>
-    <form id="form">
-      <input type="text" id="search" placeholder="Search" class="search" />
-    </form>
-  </header>
-  <h2>Welcome, {{user.username}}!</h2>
-  <p>Your id is <strong>{{user.id}}</strong>.</p>
+ <h2>Welcome back, {{user.username}}!</h2>
 {{/if}}
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quasi ab harum
-  sequi quis iure voluptatibus doloremque dicta optio maiores!</p>
+<form action="/search" method="GET">
+ <input type="text" name="query" placeholder="Search posts...">
+ <button type="submit">Search</button>
+</form>
+
+
+<h3>Search Results for "{{query}}"</h2>
+<ul>
+ {{#each results}}
+ <li>{{comment}}</li>
+ {{/each}}
+</ul>
+
+
 {{#unless isLoggedIn}}
-  <br />
-  <a class="btn" href="/signup">Sign Up</a>
+ <br />
+ <a class='btn' href='/signup'>Sign Up</a>
 {{/unless}}
