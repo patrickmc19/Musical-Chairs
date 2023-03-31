@@ -1,3 +1,4 @@
+const router = require('express').Router();
 const express = require('express');
 const app = express();
 // const spotAuth = require("../../util/spotifyAuth");
@@ -27,4 +28,6 @@ app.get('/tracks', async (req, res) => {
     }
 });
 
+// spotAuth();
+module.exports = router
 
