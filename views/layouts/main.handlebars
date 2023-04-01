@@ -12,15 +12,16 @@
       <a class="btn btn-dark" href='/'>Home</a>
       {{#if isLoggedIn}}
         <button class='btn btn-logout btn-dark'>Log Out</button>
-        <a class="btn btn-dark" href='/profile/{{user.id}}'>Dashboard</a>
+        <a class="btn btn-dark" href='/profile/{{user.id}}'>My Dashboard</a>
       {{else}}
-        <a href='/login'>Login</a>
-        <a href='/signup'>Sign Up</a>
+        <a href='/login' class="btn btn-secondary">Login</a>
+        <a href='/signup' class="btn btn-secondary">Sign Up</a>
       {{/if}}
     </nav>
     
     {{{body}}}
 
+    {{#if isLoggedIn}}
     {{!-- music post --}}
     <h2>What are we listening to Today?</h2>
     <section class="container d-flex">
@@ -38,7 +39,7 @@
       {{!-- just placing a gif here for now --}}
       <img src="https://media.tenor.com/LuV3kuXwuq8AAAAC/band-rock.gif" alt="animal band gif" style="width:30%; height:30%" class="p-2">
     </section>
-
+    {{/if}}
 
     <script src='/js/main.js'></script>
   </body>
