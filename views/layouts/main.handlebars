@@ -9,17 +9,22 @@
   </head>
   <body>
     <nav>
-      <a href='/'>Home</a>
+      <a class="btn btn-dark" href='/'>Home</a>
       {{#if isLoggedIn}}
-        <button class='btn btn-logout'>Log Out</button>
+        <button class='btn btn-logout btn-dark'>Log Out</button>
+        <a class="btn btn-dark" href='/profile/{{user.id}}'>Dashboard</a>
       {{else}}
         <a href='/login'>login</a>
         <a href='/signup'>signup</a>
       {{/if}}
     </nav>
+    
+    {{{body}}}
+
+    {{!-- music post --}}
     <h2>What are we listening to Today?</h2>
-    <section>
-      <form>
+    <section class="container d-flex">
+      <form class="p-2 flex-grow-1">
         <div class="mb-3">
             <label for="TrackSearch" class="form-label">Song Title</label>
             <input type="text" class="form-control search" id="search-song" placeholder="Wake Up, Get Up, Get Out There">
@@ -30,8 +35,11 @@
         </div>
         <button type="submit" class="btn btn-primary">Post🎵</button>
       </form>
+      {{!-- just placing a gif here for now --}}
+      <img src="https://media.tenor.com/LuV3kuXwuq8AAAAC/band-rock.gif" alt="animal band gif" style="width:30%; height:30%" class="p-2">
     </section>
-    {{{body}}}
+
+
     <script src='/js/main.js'></script>
   </body>
 </html>

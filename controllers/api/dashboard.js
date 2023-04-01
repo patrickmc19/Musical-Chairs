@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User } = require("../../models");
+const { Post, User, Profile } = require("../../models");
 const withAuth = require("../../util/withAuth");
 
 router.get('/', withAuth, async (req, res) => {
@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
         });
 
         const posts = postHistory.map((post) => post.get({plain: true}));
-        res.render("dashboard", {
+        res.render("profile", {
             title: 'My Dashboard',
             isLoggedIn: req.session.isLoggedIn,
             loggedInUserData: req.session.loggedInUserData,

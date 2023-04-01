@@ -1,4 +1,4 @@
-<h1>Welcome, {{user.username}}</h1>
+<h1>Hello, {{user.username}}</h1>
 <section>
     {{#if posts.length}}
     <div class="col-md-6 post-list">
@@ -17,8 +17,13 @@
       </div>
     </div>
     {{/each}}
-  </div>
-  {{/if}}
+    {{else}}
+      <h5>You currently have no posts</h5>
+      <img src="https://media.tenor.com/72TfkDBfeAsAAAAi/gjaja-dj.gif" alt="dj shiba gif" style="">
+
+    </div>
+    {{/if}}
+
 </section>
 
 <script src="../public/js/profile.js"></script>
