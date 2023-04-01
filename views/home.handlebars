@@ -1,14 +1,21 @@
-<h1>Musical Chairs</h1>
 {{#if isLoggedIn}}
- <h2>Welcome back, {{user.username}}!</h2>
+<nav>
+  <a href='/profile'>My Profile</a> 
+  <button class='btn btn-logout'>Logout</button>
+</nav>
+<h1>Musical Chairs</h1>
+<h2>Welcome back, {{user.username}}!</h2>
 {{/if}}
+
+<button class='btn btn-make-post'>Share a song</button>
+
 <form action="/search" method="GET">
  <input type="text" name="query" placeholder="Search posts...">
  <button type="submit">Search</button>
 </form>
 
 
-<h3>Search Results for "{{query}}"</h2>
+<p>Search Results for "{{query}}"</p>
 <ul>
  {{#each results}}
  <li>{{comment}}</li>

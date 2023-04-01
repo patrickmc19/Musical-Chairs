@@ -19,6 +19,11 @@ Comment.init(
                 len: [1] [250] // 1-250 characters
             },
         },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
