@@ -5,6 +5,12 @@ const withAuth = require('../../util/withAuth');
 router.get("/post", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
     });
     const post = postData.get({ plain: true });
     res.render("post", {
@@ -23,7 +29,8 @@ router.post("/post", withAuth, async (req, res) => {
     const postData = await Post.create({
       title: req.body.title,
       content: req.body.content,
-      user_id: req.session.userId,
+      created_at: req.body.created_at,
+      user_id: req.session.user_id,
     });
     return res.status(200).json(postData);
   } catch (error) {

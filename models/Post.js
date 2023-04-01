@@ -30,7 +30,7 @@ Post.init(
             references: {
                 model: 'User',
                 key: 'id',
-                uniqure: false,
+                unique: false,
             }
         }
     },
