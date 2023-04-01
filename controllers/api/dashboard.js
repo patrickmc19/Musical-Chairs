@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post, User, Profile } = require("../../models");
 const withAuth = require("../../util/withAuth");
 
+// get all post and join with user data
 router.get('/', withAuth, async (req, res) => {
     try{
         const postHistory = await Post.findAll({
@@ -13,19 +14,44 @@ router.get('/', withAuth, async (req, res) => {
             ],
             order: ["dateCreated", "DESC"],
         });
-
+        
+        // serialize data for template to read
         const posts = postHistory.map((post) => post.get({plain: true}));
+
+        // pass serialized data and session flag into template
         res.render("profile", {
             title: 'My Dashboard',
             isLoggedIn: req.session.isLoggedIn,
-            loggedInUserData: req.session.loggedInUserData,
-            posts: posts
+            posts
         });
     } catch (err) {
         res.status(500).json(err)
     }
 });
 
-module.exports = router;
+// getting specific post
+router.get('/post/:id', async (req, res) => {
+    try{
+        const postHistory = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ["username"],
+                },
+            ],
+        });
 
-// took inspo from this dude https://github.com/DavidTunnell/tech-blog-fullstack-mvc-node-express-mysql-handlebars-authentication/blob/main/controllers/dashboard-routes.js
+        const post = postHistory.get({ plain: true });
+
+        res.render('post', {
+            ...post,
+            isLoggedIn: req.session.isLoggedIn
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+
+module.exports = router;
