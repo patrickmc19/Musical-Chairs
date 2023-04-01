@@ -5,6 +5,12 @@ const withAuth = require("../../util/withAuth");
 router.get("/comment", withAuth, async (req, res) => {
   try {
     const commentData = await Comment.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
     });
     const comment = commentData.get({ plain: true });
     res.render("comment", {
@@ -22,6 +28,7 @@ router.post("/comment", withAuth, async (req, res) => {
   try {
     const commentData = await Comment.create({
         content: req.body.content,
+        created_at: req.body.created_at,
         user_id: req.session.userId,
         post_id: req.session.postId,
     });

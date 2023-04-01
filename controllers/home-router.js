@@ -6,8 +6,9 @@ router.get("/", withAuth, async (req, res) => {
   try {
     let user;
     if (req.session.isLoggedIn) {
-      user = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
+      user = await User.findByPk(req.session.userId, {
+        exclude: ['password'],
+        raw: true,
       });
     }
     res.render("home", {
