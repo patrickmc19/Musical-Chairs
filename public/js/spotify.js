@@ -1,15 +1,15 @@
-const searchForm = document.querySelector('#search-form');
-const searchInput = document.querySelector('#search-input');
-const resultsContainer = document.querySelector('#results-container');
-
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const resultsContainer = document.getElementById('results-container');
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const query = searchInput.value;
     console.log(query);
-    const url = `api/spotify/tracks?q=$(query)`;
+    const url = `/api/spotify/search?q=${query}`;
     try {
         const response = await fetch(url);
+        console.log(response)
         const data = await response.json();
         resultsContainer.innerHTML = '';
         data.forEach((track) => {
@@ -20,5 +20,4 @@ searchForm.addEventListener('submit', async (event) => {
     } catch (error) {
         console.error(error);
     }
-
 });
