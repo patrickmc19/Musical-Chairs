@@ -10,8 +10,10 @@ router.post("/post", withAuth, async (req, res) => {
     const postData = await Post.create({
       title: req.body.title,
       content: req.body.content,
-      created_at: req.body.created_at,
       userId: req.session.userId,
+      song_url: req.body.song_url,
+      artist: req.body.artist,
+      album: req.body.album
     });
     return res.status(200).json(postData);
   } catch (error) {

@@ -9,7 +9,7 @@ router.get('/spotify-auth', (req, res) => {
     spotAuth(res);
 });
 
-// Route to allow user to search a song 
+// Allows to search a song 
 
 router.get('/search', async (req, res) => {
     console.log('search request received');
@@ -21,6 +21,7 @@ router.get('/search', async (req, res) => {
 
     try {
         const accessToken = await spotAuth(res);
+        console.log(accessToken)
         const response = await axios.get(url, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
