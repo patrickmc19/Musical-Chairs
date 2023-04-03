@@ -29,7 +29,7 @@ router.post("/comment", withAuth, async (req, res) => {
     const commentData = await Comment.create({
       content: req.body.content,
       created_at: req.body.created_at,
-      user_id: req.session.userId,
+      userId: req.session.userId,
       post_id: req.session.postId,
     });
     return res.status(200).json(commentData);
@@ -44,7 +44,7 @@ router.get("/comment/:id", withAuth, async (req, res) => {
     const commentData = await Comment.findByPk({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
     });
     const comment = commentData.get({ plain: true });
@@ -64,7 +64,7 @@ router.delete("/comment/:id", withAuth, async (req, res) => {
     const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
     });
     if (!commentData) {
