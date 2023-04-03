@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { Post, User, Profile } = require("../../models");
+const { Post, User } = require("../../models");
 const withAuth = require("../../util/withAuth");
 
 // get all post and join with user data
 router.get('/', withAuth, async (req, res) => {
-    try{
+    try {
         const postHistory = await Post.findAll({
             include: [
                 {
@@ -14,9 +14,9 @@ router.get('/', withAuth, async (req, res) => {
             ],
             order: ["dateCreated", "DESC"],
         });
-        
+
         // serialize data for template to read
-        const posts = postHistory.map((post) => post.get({plain: true}));
+        const posts = postHistory.map((post) => post.get({ plain: true }));
 
         // pass serialized data and session flag into template
         res.render("profile", {
@@ -31,7 +31,7 @@ router.get('/', withAuth, async (req, res) => {
 
 // getting specific post
 router.get('/post/:id', async (req, res) => {
-    try{
+    try {
         const postHistory = await Post.findByPk(req.params.id, {
             include: [
                 {
