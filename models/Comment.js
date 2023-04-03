@@ -1,8 +1,8 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-// create our Comment model
-class Comment extends Model {}
+class Comment extends Model { }
+
 
 Comment.init(
     {
@@ -12,41 +12,44 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        comment_text: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1] [250] // 1-250 characters
-            },
+                len: [1, 250] // Validates that the value is between 1 and 250 characters
+            }
         },
-        created_at: {
+        date_created: {
+
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
+
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
-                model: "user",
-                key: "id",
+                model: 'user',
+                key: 'id',
             },
         },
-        post_id: {
+
+        blog_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "post",
-                key: "id",
+                model: 'blog',
+                key: 'id',
             },
         },
+
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "Comment",
+        modelName: 'comment',
     }
 );
 

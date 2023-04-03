@@ -22,65 +22,66 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-router.post("/", withAuth, async (req, res) => {
+
+router.get('/user', withAuth, async (req, res) => {
   try {
-    const userData = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-    });
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      res.status(200).json(userData);
-    });
+    // Get all users, sorted by name
+    // create user.handlebars page to render when this route is hit.
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.get('/user/:id', withAuth, async (req, res) => {
+  try {
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.put('/post/:id', withAuth, async (req, res) => {
+  try {
   } catch (error) {
     console.error(error);
     res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
 
-router.get("/user", withAuth, async (req, res) => {
+
+router.get('/post', withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-    });
-    const user = userData.get({ plain: true });
-    res.render("user", {
-      title: "User Page",
-      isLoggedIn: req.session.isLoggedIn,
-      user,
-    });
+
   } catch (error) {
     console.error(error);
     res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
 
-router.get("/user/:id", withAuth, async (req, res) => {
+
+router.post('/post', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id, {
-      attributes: { exclude: ["password"] },
-    });
-    const user = userData.get({ plain: true });
-    res.render("user", {
-      title: "User Page",
-      isLoggedIn: req.session.isLoggedIn,
-      user,
-    });
+
   } catch (error) {
     console.error(error);
     res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
 
-// Use withAuth middleware to prevent access to route
-router.get('/profile/:id', withAuth, async (req, res) => {
-  try {
-      const userData = await User.findByPk(req.session.userId, {
-          attributes: { exclude: ["password"] },
-          include: [{ model: Post}],
-      });
 
-      const user = userData.get({ plain: true });
+router.get('/post/:id', withAuth, async (req, res) => {
+  try {
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+  }
+});
+
+router.put('/post/:id', withAuth, async (req, res) => {
+  try {
 
       res.render('profile', {
           ...user,
