@@ -30,7 +30,7 @@ router.post("/post", withAuth, async (req, res) => {
       title: req.body.title,
       content: req.body.content,
       created_at: req.body.created_at,
-      user_id: req.session.user_id,
+      userId: req.session.userId,
     });
     return res.status(200).json(postData);
   } catch (error) {
@@ -44,7 +44,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
     const postData = await Post.findByPk({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
     });
     const post = postData.get({ plain: true });
@@ -64,7 +64,7 @@ router.delete("/post/:id", withAuth, async (req, res) => {
     const postData = await Post.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
     });
     if (!postData) {
