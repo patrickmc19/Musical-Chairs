@@ -9,7 +9,9 @@
   </head>
   <body>
     <nav>
-      <a class="btn btn-dark" href='/'>Home</a>
+      <a href='/'>Home</a>
+       <a href='/music'>Music</a>
+
       {{#if isLoggedIn}}
         <button class='btn btn-logout btn-dark'>Log Out</button>
         <a class="btn btn-dark" href='/profile/{{user.id}}'>My Dashboard</a>
