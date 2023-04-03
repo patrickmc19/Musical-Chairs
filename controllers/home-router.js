@@ -67,6 +67,7 @@ router.get('/music/search', async (req, res) => {
 });
 
 
+
 // post a comment
 
 router.post('/:id/comments', async (req, res) => {
@@ -120,6 +121,14 @@ router.put('/post/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Get to post page
+
+
+router.get('/post', withAuth, async (req, res) => {
+  res.render('post', { title: 'Posts' })
+});
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile/', withAuth, async (req, res) => {
