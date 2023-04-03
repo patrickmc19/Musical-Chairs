@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
 const withAuth = require("../util/withAuth");
-const axios = require('axios');
-const accessToken = 'BQAvfe8rSwpLTDNjEVcMgisMbaTKlaAFbpVFfQU0ilem8vc8xATqHROWzQWIW7kWY8q-rNHdP7pSuUdDDKbKu7ExXarAzQEOOOAzdPvGXI60JFdUcbER';
-
 
 
 // Get all posts 
@@ -41,29 +38,6 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/music', withAuth, async (req, res) => {
   res.render('music', { title: 'Music' })
 
-});
-
-// search route we're trying to hit in the front end 
-
-router.get('/music/search', async (req, res) => {
-  console.log('search request received');
-  const query = req.query.q;
-  const type = 'track';
-  const url = `https://api.spotify.com/v1/search?q=${query}&type=${type}`;
-  console.log('url:', url);
-
-  try {
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    const tracks = response.data.tracks.items;
-    res.json(tracks);
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
 });
 
 
@@ -120,6 +94,14 @@ router.put('/post/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Get to post page
+
+
+router.get('/post', withAuth, async (req, res) => {
+  res.render('post', { title: 'Posts' })
+});
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile/', withAuth, async (req, res) => {
