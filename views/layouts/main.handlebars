@@ -11,9 +11,25 @@
     <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body>
+    <div class="logo-text">
+      <div class="letter">M</div>
+      <div class="letter">U</div>
+      <div class="letter">S</div>
+      <div class="letter">I</div>
+      <div class="letter">C</div>
+      <div class="letter">A</div>
+      <div class="letter">L</div>
+      <div class="letter">🎼</div>
+      <div class="letter">C</div>
+      <div class="letter">H</div>
+      <div class="letter">A</div>
+      <div class="letter">I</div>
+      <div class="letter">R</div>
+    </div>
+
     <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <span class="navbar-text h1 me-auto" style="font-family: 'Handlee', cursive; color:rgb(73, 30, 102); text-shadow: 2px 2px rgb(33, 0, 85)">Musical Chairs</span>
+      <div class="container-fluid justify-content-end">
+        {{!-- <span class="navbar-text h1 me-auto" style="font-family: 'Handlee', cursive; color:rgb(73, 30, 102); text-shadow: 2px 2px rgb(33, 0, 85)">Musical Chairs</span> --}}
         <a class="btn btn-dark" href='/'>Home</a>
         {{#if isLoggedIn}}
           <a class="btn btn-dark mx-2" href='/profile/{{user.id}}'>My Dashboard</a>
@@ -25,29 +41,9 @@
           <a href='/signup' class="btn btn-warning mx-2">Sign Up</a>
         {{/if}}
       </div>
-    </nav>    
+    </nav> 
 
     {{{body}}}
-
-    {{#if isLoggedIn}}
-    {{!-- music post --}}
-    <h2>What are we listening to Today?</h2>
-    <section class="container d-flex">
-      <form class="p-2 flex-grow-1">
-        <div class="mb-3">
-            <label for="TrackSearch" class="form-label">Song Title</label>
-            <input type="text" class="form-control search" id="search-song" placeholder="Wake Up, Get Up, Get Out There">
-        </div>
-        <div class="mb-3">
-            <label for="TrackReview" class="form-label">Say something for this song</label>
-            <textarea class="form-control" id="review-song" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Post🎵</button>
-      </form>
-      {{!-- just placing a gif here for now --}}
-      <img src="https://media.tenor.com/LuV3kuXwuq8AAAAC/band-rock.gif" alt="animal band gif" style="width:30%; height:30%" class="p-2">
-    </section>
-    {{/if}}
 
     <script src='/js/main.js'></script>
   </body>
