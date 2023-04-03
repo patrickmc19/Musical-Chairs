@@ -1,0 +1,10 @@
+* {
+    font-family: 'Merriweather', serif;
+}
+.btn {
+    font-family: 'Roboto', sans-serif;
+}
+/* bootstrap dark color is 212529 */
+body {
+    background: linear-gradient(#212529 60%, rgba(27, 0, 62, 0.798));
+}
