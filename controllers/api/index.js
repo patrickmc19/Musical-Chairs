@@ -5,7 +5,7 @@ const commentRouter = require('./comment-router');
 const postRouter = require('./post-router');
 const profileRouter = require('./profile-router');
 
-router.use('spotify', spotifyRouter)
+router.use('/music', spotifyRouter)
 router.use('/users', usersRouter);
 router.use('/comment', commentRouter);
 router.use('/post', postRouter);
