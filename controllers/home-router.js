@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
 const withAuth = require("../util/withAuth");
+// const spotAuth = require("../util/spotifyAuth");
 const axios = require('axios');
-const accessToken = 'BQAvfe8rSwpLTDNjEVcMgisMbaTKlaAFbpVFfQU0ilem8vc8xATqHROWzQWIW7kWY8q-rNHdP7pSuUdDDKbKu7ExXarAzQEOOOAzdPvGXI60JFdUcbER';
+const accessToken = 'BQBnUJsZXX1EQ--LoIyVKeJpf4LV12RBkF6J-vnsJ7C1YyEH0axxQ3BpxSaS6WG5DadPRYSG7WJIR86k3MqRY4xaNZxhT3O90bZvMccfDZr3VUn8H0G3';
 
 
 
@@ -42,6 +43,7 @@ router.get('/music', withAuth, async (req, res) => {
   res.render('music', { title: 'Music' })
 
 });
+
 
 // search route we're trying to hit in the front end 
 
