@@ -1,12 +1,14 @@
-<h1>Signup</h1>
-<form class='signup-form'>
-  <label for='username'>Username</label><br />
-  <input type='text' name='username' id='username' /><br />
-  <label for='password'>Password</label><br />
-  <input type='password' name='password' id='password' /><br />
-  <label for='confirm-password'>Confirm Password</label><br />
-  <input type='password' name='confirm-password' id='confirm-password' /><br />
-  <button class='btn btn-primary' type='submit'>Submit</button>
-</form>
-<p>Already have an account? <a href='/login'>Login Here</a></p>
+<div class="card mx-auto" style="width: 25rem;">
+  <h1 class="text-center mt-2">Create Account</h1>
+  <form class='signup-form p-2'>
+    {{!-- <label for='username'>Username</label><br /> --}}
+    <input type='text' name='username' id='username' placeholder="Username"/><br>
+    {{!-- <label for='password'>Password</label><br /> --}}
+    <input type='password' name='password' id='password' placeholder="Password"/><br />
+    {{!-- <label for='confirm-password'>Confirm Password</label><br /> --}}
+    <input type='password' name='confirm-password' id='confirm-password' placeholder="Confirm Password"/><br />
+    <button class='btn my-2 signup-btn' type='submit'>Sign Up</button>
+  </form>
+  <p class="ms-2">Already have an account? <a href='/login'>Login Here</a></p>
+</div>
 <script src='/js/signup.js'></script>
