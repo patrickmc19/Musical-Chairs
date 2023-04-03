@@ -1,0 +1,29 @@
+<h1>Hello, {{user.username}}</h1>
+<section>
+    {{#if posts.length}}
+    <div class="col-md-6 post-list">
+    <h3>Past Posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-warning edit-post" data-id="{{post.id}}">Edit</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger delete-post" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+      <h5>You currently have no posts</h5>
+      <img src="https://media.tenor.com/72TfkDBfeAsAAAAi/gjaja-dj.gif" alt="dj shiba gif" style="">
+
+    </div>
+    {{/if}}
+
+</section>
+
+<script src="../public/js/profile.js"></script>

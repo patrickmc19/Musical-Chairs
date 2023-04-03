@@ -1,2 +1,4 @@
 -- drop database if exists DB_NAME;
-create database MUSIC_DB;
+DROP DATABASE IF EXISTS MUSIC_db;
+
+CREATE DATABASE MUSIC_db;

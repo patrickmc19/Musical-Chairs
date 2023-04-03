@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Comment extends Model { }
 
+
 Comment.init(
     {
         id: {
@@ -19,6 +20,7 @@ Comment.init(
             }
         },
         date_created: {
+
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
@@ -32,11 +34,11 @@ Comment.init(
             },
         },
 
-        blog_id: {
+        post_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'blog',
+                model: 'post',
                 key: 'id',
             },
         },
