@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { User } = require('../models');
+const router = require("express").Router();
+const { User, Post, Profile } = require("../models");
 const withAuth = require("../util/withAuth");
 
-router.get('/', withAuth, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     let user;
     if (req.session.isLoggedIn) {
@@ -11,16 +11,17 @@ router.get('/', withAuth, async (req, res) => {
         raw: true,
       });
     }
-    res.render('home', {
-      title: 'Home Page',
+    res.render("home", {
+      title: "Home Page",
       isLoggedIn: req.session.isLoggedIn,
       user,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+    res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
+
 
 router.get('/user', withAuth, async (req, res) => {
   try {
@@ -45,27 +46,30 @@ router.put('/post/:id', withAuth, async (req, res) => {
   try {
   } catch (error) {
     console.error(error);
-    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+    res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
+
 
 router.get('/post', withAuth, async (req, res) => {
   try {
 
   } catch (error) {
     console.error(error);
-    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+    res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
+
 
 router.post('/post', withAuth, async (req, res) => {
   try {
 
   } catch (error) {
     console.error(error);
-    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+    res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
   }
 });
+
 
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
@@ -79,18 +83,21 @@ router.get('/post/:id', withAuth, async (req, res) => {
 router.put('/post/:id', withAuth, async (req, res) => {
   try {
 
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
+      res.render('profile', {
+          ...user,
+          isLoggedIn: true
+      });
+  } catch (err) {
+      res.status(500).json(err);
   }
 });
 
-router.get('/login', (req, res) => {
-  res.render('login', { title: 'Log-In Page' });
+router.get("/login", (req, res) => {
+  res.render("login", { title: "Log-In Page" });
 });
 
-router.get('/signup', (req, res) => {
-  res.render('signup', { title: 'Sign-Up Page' });
+router.get("/signup", (req, res) => {
+  res.render("signup", { title: "Sign-Up Page" });
 });
 
 module.exports = router;
