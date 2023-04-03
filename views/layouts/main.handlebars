@@ -17,6 +17,8 @@
         <a class="btn btn-dark" href='/'>Home</a>
         {{#if isLoggedIn}}
           <a class="btn btn-dark mx-2" href='/profile/{{user.id}}'>My Dashboard</a>
+          <a href='/post' class="btn btn-dark mx-2">Posts</a>
+          <a href='/music' class="btn btn-dark mx-2">Music🎵</a>
           <button class="btn btn-logout btn-dark mx-2">Log Out</button>
         {{else}}
           <a href='/login' class="btn btn-dark mx-2">Login</a>
