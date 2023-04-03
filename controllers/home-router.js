@@ -1,10 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
 const withAuth = require("../util/withAuth");
-// const spotAuth = require("../util/spotifyAuth");
-const axios = require('axios');
-const accessToken = 'BQBnUJsZXX1EQ--LoIyVKeJpf4LV12RBkF6J-vnsJ7C1YyEH0axxQ3BpxSaS6WG5DadPRYSG7WJIR86k3MqRY4xaNZxhT3O90bZvMccfDZr3VUn8H0G3';
-
 
 
 // Get all posts 
@@ -43,31 +39,6 @@ router.get('/music', withAuth, async (req, res) => {
   res.render('music', { title: 'Music' })
 
 });
-
-
-// search route we're trying to hit in the front end 
-
-router.get('/music/search', async (req, res) => {
-  console.log('search request received');
-  const query = req.query.q;
-  const type = 'track';
-  const url = `https://api.spotify.com/v1/search?q=${query}&type=${type}`;
-  console.log('url:', url);
-
-  try {
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    const tracks = response.data.tracks.items;
-    res.json(tracks);
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
-
 
 
 // post a comment
