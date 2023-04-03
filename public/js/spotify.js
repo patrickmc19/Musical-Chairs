@@ -6,7 +6,7 @@ searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const query = searchInput.value;
     console.log(query);
-    const url = `/api/spotify/search?q=${query}`;
+    const url = `music/search?q=${query}`;
     try {
         const response = await fetch(url);
         console.log(response)
