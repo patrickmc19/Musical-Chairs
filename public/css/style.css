@@ -83,3 +83,28 @@ body {
 	transform: translateY(-50%);
     opacity: 0;
 }
+
+.form-class {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 200px;
+}
+
+#search-form {
+	font-family: 'Roboto', sans-serif;
+	position: relative;
+  top: -295px; 
+  left: 20px; 
+}
+
+.col-md-6.d-flex.align-items-center {
+  justify-content: flex-start; 
+}
+
+.btn-primary {
+	font-family: 'Roboto', sans-serif;
+	background-color: #4B0082;
+	color: #fff;
+  }
