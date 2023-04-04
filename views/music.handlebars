@@ -9,7 +9,19 @@
           </div>
           <div class="form-group">
             <label for="post-content">Content:</label>
-            <textarea id="post-content" name="post-content" class="form-control"></textarea>
+            <textarea id="post-content" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="song-url">Song URL:</label>
+            <input type="text" id="song-url" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="artist">Artist:</label>
+            <input type="text" id="artist" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="album">Album:</label>
+            <input type="text" id="album" class="form-control">
           </div>
           <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
@@ -18,13 +30,15 @@
         <form id="search-form">
           <div class="form-group">
             <label for="search-input">Search by Song or Artist:</label>
-            <input type="text" id="search-input" name="search-input" class="form-control">
+            <input type="text" id="search-input" class="form-control">
           </div>
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
       </div>
     </div>
-    <div id="results-container"></div>
+    <div id="results-container"></div> 
+    <div id="post-container" class="d-flex justify-content-end mb-5"></div>
+    </div>
   </div>
   <script src="/js/spotify.js"></script>
 </body>
