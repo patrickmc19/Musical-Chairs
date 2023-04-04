@@ -108,3 +108,7 @@ body {
 	background-color: #4B0082;
 	color: #fff;
   }
+.public-posts {
+	width: 35%;
+	background: grey;
+}

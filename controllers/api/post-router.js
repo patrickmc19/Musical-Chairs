@@ -22,41 +22,6 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-// Comment on a post
-
-router.post('/:id/comment', async (req, res) => {
-  try {
-    const postId = req.params.id;
-    const { comment } = req.body;
-    const userId = req.session.userId;
-
-    if (!comment || !userId) {
-      return res.status(400).json({ message: 'Comment text and user ID are required' });
-    }
-
-    const newComment = await Comment.create({
-      comment,
-      user_id: userId,
-      post_id: postId,
-    });
-
-    // Fetch the user who created the comment
-    const user = await User.findByPk(userId, { attributes: ['name'] });
-
-    // Send the new comment as a response
-    res.status(201).json({
-      id: newComment.id,
-      comment: newComment.comment,
-      user: user.name,
-      createdAt: newComment.createdAt,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-
 // Get all posts
 
 router.get('/post', withAuth, async (req, res) => {
@@ -106,7 +71,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
 
 
 // Update a post
-router.put('/:id', async (req, res) => {
+router.put('/post/:id', async (req, res) => {
   try {
     const postData = await Post.update({
       name: req.body.name,

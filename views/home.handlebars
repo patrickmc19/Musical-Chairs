@@ -26,17 +26,19 @@
 {{!-- need to list out ALL the posts in database --}}
 {{!-- THIS SECTION STILL NEEDS CLEAN UP AND EDITS --}}
 {{!-- Section class is just temporary --}}
-<section class="card">
-    {{#if posts.length}}
-    <div class="col-md-6 post-list">
-    <h3>Discover</h3>
-
+<section class="public-posts">
+  {{#if posts.length}}  
+  <h3 class="h3">Discover</h3>
+  <div class="col-md-6 post-list">
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
         <p>{{post.content}}</p>
       </div>
+    </div>
+    <div>
+      <p><a href="/post/{{post.id}}/comment">{{comments.content}}</a></p>
     </div>
     {{/each}}
     {{else}}
