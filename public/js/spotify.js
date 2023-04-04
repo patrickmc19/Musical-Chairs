@@ -12,9 +12,15 @@ searchForm.addEventListener('submit', async (event) => {
         console.log(response)
         const data = await response.json();
         resultsContainer.innerHTML = '';
-        data.forEach((track) => {
+        // Returns the first 5 tracks
+        data.slice(0, 5).forEach((track) => {
             const trackDiv = document.createElement('div');
-            trackDiv.textContent = track.name;
+            const trackName = document.createElement('h3');
+            const artistName = document.createElement('p');
+            trackName.textContent = track.name;
+            artistName.textContent = track.artists[0].name
+            trackDiv.appendChild(trackName);
+            trackDiv.appendChild(artistName);
             resultsContainer.appendChild(trackDiv);
 
             if (track.preview_url) {
@@ -26,9 +32,9 @@ searchForm.addEventListener('submit', async (event) => {
                 const pauseBtn = document.createElement('button');
                 const rewindBtn = document.createElement('button');
 
-                playBtn.textContent = 'Play';
-                pauseBtn.textContent = 'Pause';
-                rewindBtn.textContent = 'Rewind';
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                rewindBtn.innerHTML = '<i class="fas fa-backward"></i>';
 
                 playBtn.addEventListener('click', () => {
                     audio.play();
