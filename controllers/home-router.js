@@ -2,6 +2,26 @@ const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
 const withAuth = require("../util/withAuth");
 
+// this route populates the homepage with all posts
+router.get('/', async (req, res) => {
+  try {
+    let user;
+    if (req.session.isLoggedIn) {
+      user = await User.findByPk(req.session.userId, {
+        exclude: ['password'],
+        raw: true,
+      });
+    }
+    res.render('home', {
+      title: 'My Home Page',
+      isLoggedIn: req.session.isLoggedIn,
+      user,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An unexpected error occurred.');
+  }
+});
 
 // Get all posts 
 
@@ -104,10 +124,10 @@ router.put('/post/:id', async (req, res) => {
 // });
 
 
-// Takes us to profile
+// Takes us to specific user profile
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile/', withAuth, async (req, res) => {
+router.get('/profile/:id', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userId, {
