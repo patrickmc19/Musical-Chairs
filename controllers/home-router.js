@@ -36,7 +36,8 @@ router.get('/', withAuth, async (req, res) => {
 
 // creates the music route
 router.get('/music', withAuth, async (req, res) => {
-  res.render('music', { title: 'Music' })
+  const isLoggedIn = true;
+  res.render('music', { title: 'Music', isLoggedIn })
 
 });
 
