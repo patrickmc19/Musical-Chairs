@@ -5,7 +5,7 @@ const withAuth = require('../../util/withAuth');
 
 // Create a post
 
-router.post("/post", withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const postData = await Post.create({
       title: req.body.title,
@@ -24,7 +24,7 @@ router.post("/post", withAuth, async (req, res) => {
 
 // Comment on a post
 
-router.post('/post/:id/comment', async (req, res) => {
+router.post('/:id/comment', async (req, res) => {
   try {
     const postId = req.params.id;
     const { comment } = req.body;

@@ -1,6 +1,20 @@
+const postForm = document.getElementById('post-form');
+const postTitle = document.getElementById('post-title');
+const postContent = document.getElementById('post-content');
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const resultsContainer = document.getElementById('results-container');
+
+
+postForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const title = postTitle.value;
+    const content = postContent.value;
+    console.log('Title:', title);
+    console.log('Content:', content);
+    postTitle.value = '';
+    postContent.value = '';
+});
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
