@@ -34,6 +34,32 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
+// Route to select specific post 
+
+router.get('/post/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render("post", {
+      title: "Posts",
+      isLoggedIn: req.session.isLoggedIn,
+      post,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 // creates the music route (addedLoggedIn = true to get it to display nav)
 router.get('/music', withAuth, async (req, res) => {
   const isLoggedIn = true;
