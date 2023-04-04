@@ -34,7 +34,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
-// creates the music route
+// creates the music route (addedLoggedIn = true to get it to display nav)
 router.get('/music', withAuth, async (req, res) => {
   const isLoggedIn = true;
   res.render('music', { title: 'Music', isLoggedIn })
