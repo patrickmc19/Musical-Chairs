@@ -83,3 +83,8 @@ body {
 	transform: translateY(-50%);
     opacity: 0;
 }
+
+.public-posts {
+	width: 35%;
+	background: grey;
+}
