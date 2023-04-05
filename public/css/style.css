@@ -69,10 +69,11 @@ body {
     font-size: 100px;
 	display: flex;
 	position: absolute;
-	bottom: 10vh;
+	bottom: 10%;
 	left: 50%;
 	transform: translateX(-50%);
 	user-select: none;
+	z-index: 1;
 }
 .letter {
 	transition: ease-in 1s, ease-out 1s;
@@ -84,6 +85,8 @@ body {
     opacity: 0;
 }
 
+
+/*  */
 .form-class {
 	display: flex;
 	flex-direction: column;
@@ -108,9 +111,18 @@ body {
 	background-color: #4B0082;
 	color: #fff;
   }
+
 .public-posts {
-	width: 35%;
-	background: grey;
+	background: #212529;
+	z-index: 9;
 }
 
-  
+#discover-h3 {
+	color: rgba(27, 0, 62, 0.798);
+	font-weight: bolder;
+	display: flex;
+	position: absolute;
+	left: 10%;
+	font-size: 35px;
+	text-shadow: 0.3px 0.3px 3px #2f2140;
+}

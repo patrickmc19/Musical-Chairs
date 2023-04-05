@@ -3,5 +3,15 @@
         "title": "Banger",
         "content": "This song SLAPS",
         "userId": 1
+    },
+    {
+        "title": "Banger II",
+        "content": "This song SLAPS",
+        "userId": 1
+    },
+    {
+        "title": "Banger III",
+        "content": "This song SLAPS",
+        "userId": 1
     }
 ]
