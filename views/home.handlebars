@@ -1,21 +1,19 @@
 {{#if isLoggedIn}}
-<h2>Welcome back, {{user.username}}!</h2>
-{{/if}}
-
-<button class='btn btn-make-post'>Share a song</button>
+{{!-- WE CAN ADD THE SEARCH SPECIFIC POST FUNCTION WHEN WE HAVE TIME --}}
+{{!-- <button class='btn btn-make-post'>Share a song</button>
 
 <form action="/search" method="GET">
  <input type="text" name="query" placeholder="Search posts...">
  <button type="submit">Search</button>
 </form>
+ --}}
 
-
-<p>Search Results for "{{query}}"</p>
+{{!-- <p>Search Results for "{{query}}"</p>
 <ul>
  {{#each results}}
  <li>{{comment}}</li>
  {{/each}}
-</ul>
+</ul> --}}
 
 
 {{#unless isLoggedIn}}
@@ -23,29 +21,27 @@
  <a class='btn' href='/signup'>Sign Up</a>
 {{/unless}}
 
-{{!-- need to list out ALL the posts in database --}}
-{{!-- THIS SECTION STILL NEEDS CLEAN UP AND EDITS --}}
-{{!-- Section class is just temporary --}}
-<section class="public-posts">
-  {{#if posts.length}}  
-  <h3 class="h3">Discover</h3>
-  <div class="col-md-6 post-list">
+{{!-- for homepage to show all existing posts --}}
+<h3 class="h3" id="discover-h3">Discover what everyone is listening to:</h3>
+<div class="public-posts container my-4">
+  <div class="row my-5 post-list">
+  {{#if posts.length}}   
     {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
-        <p>{{post.content}}</p>
-        <p>Song Preview: {{post.song_url}}</p>
-        <p>Artist: {{post.artist}}</p>
-        <p>Album: {{post.album}}</p>
+    <div class="col-md-4 col-sm-12">
+      <div class="p-card p-2 bg-light bg-opacity-25 text-white rounded px-3 my-1 mx-1">
+        <h4 class="mt-2"><a href="/post/{{post.id}}" class="link-dark">{{post.title}}</a></h4>
+        <p class="d-block mb-5">{{post.content}}</p>
+        <p><a href="{{post.song_url}}" class="link-dark"><i class="fa fa-play-circle fa-xl" aria-hidden="true"></i></a></p>
+        <p style="color: rgb(39, 39, 39)">🎹 {{post.artist}} | <i class="fa fa-music" aria-hidden="true"></i> {{post.album}}</p>
       </div>
     </div>
-    <div>
+    {{!-- <div>
       <p><a href="/post/{{post.id}}/comment">{{comments.content}}</a></p>
-    </div>
+    </div> --}}
     {{/each}}
     {{else}}
       <h5>There are currently no posts ◕︵◕</h5>
     </div>
     {{/if}}
-</section>
+</div>
+{{/if}}
