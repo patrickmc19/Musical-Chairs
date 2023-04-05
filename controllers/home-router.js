@@ -2,27 +2,6 @@ const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
 const withAuth = require("../util/withAuth");
 
-// this route populates the homepage with all posts
-router.get('/', async (req, res) => {
-  try {
-    let user;
-    if (req.session.isLoggedIn) {
-      user = await User.findByPk(req.session.userId, {
-        exclude: ['password'],
-        raw: true,
-      });
-    }
-    res.render('home', {
-      title: 'My Home Page',
-      isLoggedIn: req.session.isLoggedIn,
-      user,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('An unexpected error occurred.');
-  }
-});
-
 // Get all posts 
 
 router.get('/', withAuth, async (req, res) => {
