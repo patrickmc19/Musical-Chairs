@@ -20,7 +20,7 @@ postForm.addEventListener('submit', async (event) => {
     postContent.value = '';
 
     // Send a POST request to our backend with the posta data 
-    try {
+    // try {
         const response = await fetch('/api/post', {
             method: 'POST',
             headers: {
@@ -35,11 +35,16 @@ postForm.addEventListener('submit', async (event) => {
         const data = await response.json();
         console.log(data);
 
+        const trackTitle = document.querySelector('#post-title');
+        const postContent2 = document.querySelector('#post-content');
+
         // Creates HTML elements for the post title and content 
         const postDiv = document.createElement('div');
         const postTitle = document.createElement('h2');
         const postContent = document.createElement('p');
         postTitle.innerText = data.title;
+        trackTitle.value = data.title;
+        postContent2.value = data.content;
         postContent.innerText = data.content;
         postDiv.appendChild(postTitle);
         postDiv.appendChild(postContent);
@@ -68,9 +73,9 @@ postForm.addEventListener('submit', async (event) => {
         selectedTracks = [];
         selectedTracksList.innerHTML = '';
 
-    } catch (error) {
-        console.error(error);
-    }
+    // } catch (error) {
+    //     console.error(error);
+    // }
 });
 
 // Event listener for when the user searches for music 
@@ -81,7 +86,7 @@ searchForm.addEventListener('submit', async (event) => {
 
     // Here we fetch the data from spotify's API and our back end to match the frontend search 
     const url = `/api/music/search?q=${query}`;
-    try {
+    // try {
         const response = await fetch(url);
         console.log(response)
         const data = await response.json();
@@ -147,37 +152,33 @@ searchForm.addEventListener('submit', async (event) => {
             // Add a button to add the track to the post
             const addTrackBtn = document.createElement('button');
             addTrackBtn.textContent = 'Add to post';
+            addTrackBtn.classList.add('add-track-btn');
             trackDiv.appendChild(addTrackBtn);
 
             // When the button is clicked, add the track to the post
             addTrackBtn.addEventListener('click', () => {
-                // Get the selected artist and track name
+                // Get the selected artist, track name, song preview
                 const selectedArtistName = track.artists[0].name;
                 const selectedTrackName = track.name;
+                const selectedTrackURL = track.preview_url;
+                const selectedTrackAlbum = track.album.name;
 
-                // Create the HTML elements for the new post content
-                const artistP = document.createElement('p');
-                artistP.textContent = selectedArtistName;
-                const trackP = document.createElement('p');
-                trackP.textContent = selectedTrackName;
+                // Push values to the new post form
+                const newPostTitle = document.querySelector('#post-title');
+                const newSongURL = document.querySelector('#song-url');
+                const newSongArtist = document.querySelector('#artist');
+                const newSongAlbum = document.querySelector('#album');
 
-                // Create a new post div and add the HTML elements
-                const postDiv = document.createElement('div');
-                const postTitle = document.createElement('h2');
-                const postContent = document.createElement('div');
-                postTitle.innerText = 'New Post';
-                postContent.appendChild(artistP);
-                postContent.appendChild(trackP);
-                postDiv.appendChild(postTitle);
-                postDiv.appendChild(postContent);
 
                 // Add the new post to the page
-                const postContainer = document.getElementById('post-container');
-                postContainer.appendChild(postDiv);
-                console.log('Added to post:', data.name);
+                newPostTitle.value = selectedTrackName;
+                newSongURL.value = selectedTrackURL;
+                newSongArtist.value = selectedArtistName;
+                newSongAlbum.value = selectedTrackAlbum;
+                // console.log('Added to post:', data.name);
             });
         });
-    } catch (error) {
-        console.error(error);
-    }
+    // } catch (error) {
+        // console.error(error);
+    // }
 });

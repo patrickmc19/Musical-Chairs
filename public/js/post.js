@@ -3,11 +3,14 @@ const newFormHandler = async (event) => {
 
     const title = document.querySelector('#post-title').value.trim();
     const content = document.querySelector('#post-content').value.trim();
+    const song_url = document.querySelector('#song-url').value.trim();
+    const artist = document.querySelector('#artist').value.trim();
+    const album = document.querySelector('#album').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/post`, {
+        const response = await fetch(`/api/post`, {
             method: 'POST',
-            body: JSON.stringify({ title, content }),
+            body: JSON.stringify({ title, content, song_url, artist, album }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -38,7 +41,7 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('.new-post-form')
+    .querySelector('#post-form')
     .addEventListener('submit', newFormHandler);
 
 document
