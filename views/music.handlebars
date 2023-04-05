@@ -1,45 +1,61 @@
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <form id="post-form" class="form-class">
-          <div class="form-group">
-            <label for="post-title">Title:</label>
-            <input type="text" id="post-title" name="post-title" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="post-content">Content:</label>
-            <textarea id="post-content" class="form-control"  placeholder="What do you think about this song?"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="song-url">Song URL:</label>
-            <input type="text" id="song-url" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="artist">Artist:</label>
-            <input type="text" id="artist" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="album">Album:</label>
-            <input type="text" id="album" class="form-control">
-          </div>
-          <button type="submit" class="btn btn-primary">Create Post</button>
-        </form>
-      </div>
-      <div class="col-md-6 d-flex align-items-center justify-content start" style = "margin-top: 100px;">
-        <form id="search-form">
-          <div class="form-group">
-            <label for="search-input">Search by Song or Artist:</label>
-            <input type="text" id="search-input" class="form-control">
-          </div>
+{{#if isLoggedIn}}
+<div class="container mt-5">
+  <div class="row my-2">
+    {{!-- search song form --}}
+    <div class="col-md-3 col-sm-6 d-flex align-items-center justify-content-center">
+      <form id="search-form" class="bg-light bg-opacity-25 text-white rounded py-2 px-3 my-1 mx-1">
+        <div class="form-group">
+          <label for="search-input">Search by Song or Artist:</label>
+          <input type="text" id="search-input" class="form-control">
           <button type="submit" class="btn btn-primary">Search</button>
-        </form>
+        </div>
+      </form>
+      
+    </div>
+
+    {{!-- results to song search --}}
+    <div class="col-md-3 col-sm-6 d-flex align-items-center justify-content-center">
+      <div id="results-container" class="bg-light bg-opacity-25 text-white rounded px-1 my-1 mx-1">
       </div>
     </div>
-    <div id="results-container"></div> 
-    <div id="post-container" class="d-flex justify-content-end mb-5"></div>
+
+    {{!-- new post form --}}
+    <div class="col-md-6 align-items-center justify-content-center">
+      <form id="post-form" class="form-class bg-light bg-opacity-25 text-white rounded py-2 px-2 my-1 mx-1">
+        <div class="form-group">
+          <label for="post-title">Title:</label>
+          <input type="text" id="post-title" name="post-title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="post-content">Content:</label>
+          <textarea id="post-content" class="form-control"  placeholder="What do you think about this song?"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="song-url">Song URL:</label>
+          <input type="text" id="song-url" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="artist">Artist:</label>
+          <input type="text" id="artist" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="album">Album:</label>
+          <input type="text" id="album" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Post</button>
+      </form>
+    </div>
+    
+    {{!-- not sure what this is  --}}
+    <div id="post-container" class="d-flex justify-content-end mb-5">
     </div>
   </div>
-  <script src="/js/spotify.js"></script>
-  <script src="/js/post.js"></script>
-</body>
+
+  
+</div>
+<script src="/js/spotify.js"></script>
+<script src="/js/post.js"></script>
+{{else}}
+<a href='/login' class="btn btn-dark mx-2">Login</a>
+<a href='/signup' class="btn btn-warning mx-2">Sign Up</a>
+{{/if}}

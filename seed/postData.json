@@ -2,16 +2,41 @@
     {
         "title": "Banger",
         "content": "This song SLAPS",
-        "userId": 1
+        "song_url": "#",
+        "artist": "Best human",
+        "album": "No 1 Album",
+        "userId": 2
     },
     {
         "title": "Banger II",
         "content": "This song SLAPS",
+        "song_url": "#",
+        "artist": "Best human",
+        "album": "No 1 Album",
         "userId": 1
     },
     {
         "title": "Banger III",
         "content": "This song SLAPS",
+        "song_url": "#",
+        "artist": "Best human",
+        "album": "No 1 Album",
+        "userId": 1
+    },
+    {
+        "title": "Banger IV",
+        "content": "This song SLAPS",
+        "song_url": "#",
+        "artist": "Best human",
+        "album": "No 1 Album",
+        "userId": 3
+    },
+    {
+        "title": "Banger V",
+        "content": "This song SLAPS",
+        "song_url": "#",
+        "artist": "Best human",
+        "album": "No 1 Album",
         "userId": 1
     }
 ]
