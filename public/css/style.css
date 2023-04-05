@@ -66,9 +66,9 @@ body {
 
 /* title credits due here https://codepen.io/kajetan-orski/pen/YzQObKg */
 .logo-text {
-    font-size: 100px;
+    font-size: 13vmin;
 	display: flex;
-	position: absolute;
+	position: fixed;
 	bottom: 10%;
 	left: 50%;
 	transform: translateX(-50%);
@@ -98,31 +98,54 @@ body {
 #search-form {
 	font-family: 'Roboto', sans-serif;
 	position: relative;
-  top: -295px; 
-  left: 20px; 
 }
 
-.col-md-6.d-flex.align-items-center {
+/* .col-md-6.d-flex.align-items-center {
   justify-content: flex-start; 
-}
+} */
 
 .btn-primary {
 	font-family: 'Roboto', sans-serif;
 	background-color: #4B0082;
 	color: #fff;
-  }
+	border-color: #000;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.btn-primary:hover {
+	background: #6d44b8;
+	border-color: #000;
+}
 
+/* for home page posts */
 .public-posts {
-	background: #212529;
+	background: #21252900;
 	z-index: 9;
 }
 
+/* for home page header */
 #discover-h3 {
 	color: rgba(27, 0, 62, 0.798);
 	font-weight: bolder;
 	display: flex;
 	position: absolute;
 	left: 10%;
-	font-size: 35px;
+	font-size: 4vmin;
 	text-shadow: 0.3px 0.3px 3px #2f2140;
+}
+
+/* search song results */
+#results-container h3{
+	font-size: medium;
+}
+#results-container p{
+	font-size: 10px;
+}
+
+/* for our title to stop animation if screen is small */
+@media only screen and (max-width: 768px) {
+	.logo-text {
+		font-size: 20px;
+		bottom: 5%;
+	}
 }
