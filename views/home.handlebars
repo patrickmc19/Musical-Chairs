@@ -1,5 +1,5 @@
 {{#if isLoggedIn}}
-<h2>Welcome back, {{user.username}}!</h2>
+<h2>Welcome back, {{post.User.username}}!</h2>
 {{/if}}
 
 <button class='btn btn-make-post'>Share a song</button>
@@ -34,8 +34,9 @@
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+         <p>Created by {{post.User.username}} on {{format_date post.date_created}}</p>
         <p>{{post.content}}</p>
-        <p>Song Preview: {{post.song_url}}</p>
+        <p>Song Preview: <a href="{{post.song_url}}">{{post.song_url}}</a></p>
         <p>Artist: {{post.artist}}</p>
         <p>Album: {{post.album}}</p>
       </div>
