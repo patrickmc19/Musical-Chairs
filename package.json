@@ -1,9 +1,5 @@
 {
-  "name": "express-hbars-boilerplate",
-  "version": "1.0.0",
-  "description": "This boilerplate may be used as a starting point for building a full-stack app with Handlebars, Express, and Sequelize/MySQL.",
-  "private": true,
-  "scripts": {
+   "scripts": {
     "start": "node server.js",
     "test": "npm run lint",
     "lint": "eslint .",
