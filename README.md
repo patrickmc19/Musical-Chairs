@@ -1,50 +1,34 @@
 # Musical Chairs 
 
-## User Story:
+## Description:
 
-```
-AS a lover of music,
-I WANT TO be able to share my favorite songs with others,
-SO THAT others can listen too.
-```
+Musical Chairs is a social media platform that allows users to post their favorite songs with content. Users can share their thoughts on the song in addition to providing a short sample of the track. 
 
-## Acceptance Criteria
+## Installation
 
-```
-GIVEN a social media platform with the ability to post music and content
-WHEN I signup as a user
-THEN I am presented with a public feed of all songs posted by other users
-WHEN I click on the play button on a post
-THEN I am taken to another page with a media player that automatically plays a 30 second preview of the song
-WHEN I click "Music" on the navigation bar
-THEN I am presented with a search bar and form for me to post my own music
-WHEN I type in an artist or song in the search bar
-THEN I am presented with three songs that most closely match my search
-WHEN I am presented with the three song options
-THEN I can click the play, pause, or restart song buttons to help with my selection
-WHEN I click "Add to post" under the song of my choosing
-THEN I can see the title, song URL, artist, and album automatically populated in my form
-WHEN I fill out the "Content" portion
-THEN I can create a post
-WHEN I click "Create Post"
-THEN I am automatically taken to "My Profile" page that contains all posts I've made
-WHEN I click "Delete"
-THEN I am able to remove a post from the public feed and my profile
-```
+N/A
 
-## Functionality
+## Usage
 
 Upon opening, the site presents a public feed of all users' posts and the option to play a song posted by another user.
 ![HomePage](./images/HomePage.png)
 
-If I would like to play a song posted by myself or another user, I am taken to a media player with a 30 second preview of the song.
+If you would like to play a song posted by yourself or another user from the HomePage, you are taken to another webpage that contains a media player with a 30 second preview of the song.
 ![MediaPlayer](./images/MediaPlayer.png)
 
-If I would like to post a new song, I can click the Music tab at the top of the navigation bar. I am then presented with a search bar that allows you to search by artist or track. I can click "Add to post" once I have selected a song, and share my thoughts on the song by filling out the "Content" portion of the form.
+If you would like to post a new song and share it with others, you can click the "Music" tab at the top of the navigation bar. On the "Music" webpage, you can search for a song to post by the artist and/or track name. Once you click Search, you are presented with three tracks that most closely match your search. You have the option to play, pause, or restart a preview of the song. Once you have found the song you would like to post, click "Add to post". The title, song URL, artist, and album will automatically populate into the post form. You simply need to add your commentary within the "Content" portion of the form and click "Create Post" in order to share a song on the public feed.
 ![CreatePost](./images/CreatePost.png)
 
-Once I have created a post, I a,m taken to my profile where I can see my most recent posts and all past posts. I have the option to delete posts under my profile page.
+Once you have created your post, you are taken to your personal profile where you can see past posts and your most current post. If you would like to delete a post, you can do so on your profile page. 
 ![MyProfile](./images/MyProfile.png)
+
+## Credits
+
+Jeremy Racik
+Patrick McKnight
+Tiffany Tsai
+Shavana Puchta
+
 
 ## Resources
 
