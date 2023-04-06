@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const tracks = document.querySelector('#post-track').value.trim();
 
     if (title && content && tracks) {
-        const response = await fetch(`/api/profile`, {
+        const response = await fetch(`/api/post`, {
             method: 'POST',
             body: JSON.stringify({ title, tracks, content }),
             headers: {
@@ -22,52 +22,24 @@ const newFormHandler = async (event) => {
     }
 };
 
+const delButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
 
+        const response = await fetch(`/api/post/${id}`, {
+            method: 'DELETE',
+        });
 
-
-// const editButtonHandler = async (event) => {
-//     if (event.target.hasAttribute('data-id')) {
-//         const id = event.target.getAttribute('data-id');
-
-//         const response = await fetch(`/api/post/${id}`, {
-//             method: 'GET',
-//         });
-
-//         if (response.ok) {
-//             document.location.replace(`/api/post/${id}`);
-//         } else {
-//             alert('Failed to connect to post');
-//         }
-//     }
-// };
-
-
-// const delButtonHandler = async (event) => {
-//     if (event.target.hasAttribute('data-id')) {
-//         const id = event.target.getAttribute('data-id');
-
-//         const response = await fetch(`/api/post/${id}`, {
-//             method: 'DELETE',
-//         });
-
-//         if (response.ok) {
-//             document.location.replace('/profile');
-//         } else {
-//             alert('Failed to delete post');
-//         }
-//     }
-// };
-
+        if (response.ok) {
+            document.location.replace('/profile');
+        } else {
+            alert('Failed to delete post');
+        }
+    }
+};
 
 
 document
-    .querySelector('.new-blog-form')
-    .addEventListener('submit', newFormHandler);
+    .querySelector('.post-list')
+    .addEventListener('click', delButtonHandler);
 
-// document
-//     .querySelector('.edit-post')
-//     .addEventListener('submit', editButtonHandler);
-
-// document
-//     .querySelector('.delete-post')
-//     .addEventListener('submit', delButtonHandler);
