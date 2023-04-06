@@ -2,12 +2,15 @@
 
 ## User Story:
 
+```
 AS a lover of music, 
 I WANT TO be able to share my favorite songs with others,
 SO THAT others can listen too. 
+```
 
 ## Acceptance Criteria
 
+```
 GIVEN a social media platform with the ability to post music and content
 WHEN I signup as a user
 THEN I am presented with a public feed of all songs posted by other users
@@ -27,6 +30,7 @@ WHEN I click "Create Post"
 THEN I am automatically taken to "My Profile" page that contains all posts I've made
 WHEN I click "Delete"
 THEN I am able to remove a post from the public feed and my profile
+```
 
 ## Functionality
 
