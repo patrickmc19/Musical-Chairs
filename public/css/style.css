@@ -117,7 +117,7 @@ body {
 .public-posts {
 	background: #21252900;
 	overflow: auto;
-	max-height: 65vh;
+	max-height: 60vh;
 	-ms-overflow-style: none;  /* IE and Edge */
   	scrollbar-width: none;  /* Firefox */
 }
@@ -125,7 +125,6 @@ body {
 .public-posts::-webkit-scrollbar {
 	display: none;
 }
-  
 
 /* for home page header */
 #discover-h3 {
@@ -167,5 +166,21 @@ body {
 
 /* for profile post container */
 #profile-posts {
+	border-radius: 15%;
+}
+/* for profile page posts */
+.profile-posts {
+	overflow: auto;
+	max-height: 65vh;
+	-ms-overflow-style: none;  /* IE and Edge */
+  	scrollbar-width: none;  /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.profile-posts::-webkit-scrollbar {
+	display: none;
+}
+
+#homepage-post {
 	border-radius: 10%;
 }
+

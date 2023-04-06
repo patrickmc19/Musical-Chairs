@@ -1,29 +1,34 @@
-<div class="-posts container my-4">
+<div class="profile-posts container my-4">
   <div class="row my-5 post-list">
     {{#if posts.length}}
-      <div class="row col-md-12 post-list">
-        <h3>My Posts:</h3>
-        {{#each posts}}
-    <div class="col-md-4 col-sm-12">
-      <div class="p-card p-2 bg-light bg-opacity-25 text-white px-3 my-1 mx-1" id="profile-posts">
-        <h4 class="mt-2"><class="link-dark">{{this.title}}</a></h4>
-        <p class="d-block mb-5">{{this.content}}</p>
-        <p>Created on {{format_date this.date_created}}</p>
-        <p><a href="{{this.song_url}}" class="link-dark"><i class="fa fa-play-circle fa-xl" aria-hidden="true"></i></a></p>
-        <p style="color: rgb(39, 39, 39)">🎹 {{this.artist}} | <i class="fa fa-music" aria-hidden="true"></i> {{this.album}}</p>
-        <div class="col-md-4 text-right" id="profileDelete">
-          <button class="btn btn-sm btn-danger" id="profileDelete" data-id="{{this.id}}">DELETE</button>
+    <div class="col-6 post-list">
+      <h3 class="text-center" style="color: #573b8a;">My Posts:</h3>
+      {{#each posts}}
+      <div class="col-12">
+        <div class="p-2 bg-light bg-opacity-25 px-3 my-1 mx-1" id="profile-posts">
+          <h4 class="my-2 text-center" style="font-family: 'Lora', serif; font-size: 30px; color: #bc9cf7;">{{this.title}}</a></h4>
+          <p class="d-block mb-5 text-wrap text-break" style="color: #bc9cf7;">{{this.content}}</p>
+          <p style="color: #bc9cf7;">Posted on {{format_date this.date_created}}</p>
+          <p><a href="{{this.song_url}}" class="link-dark"><i class="fa fa-play-circle fa-xl" aria-hidden="true"></i></a></p>
+          <p style="color: rgb(39, 39, 39)">🎹 {{this.artist}} | <i class="fa fa-music" aria-hidden="true"></i> {{this.album}}</p>
+          <div class="d-grid d-flex justify-content-end pe-5" id="profileDelete">
+            <button class="btn btn-sm btn-danger" id="profileDelete" data-id="{{this.id}}">DELETE</button>
+          </div>
         </div>
-      </div>
-    </div>        
-    {{/each}}
-      </div>
+      </div>        
+      {{/each}}
+    </div>
+    <div class="col-6 pt-5 px-5" id="profile-gif">
+      <img class="sticky-top" src="https://media.tenor.com/72TfkDBfeAsAAAAi/gjaja-dj.gif" alt="dj shiba gif" style="">
+    </div>
     {{else}}
-      <div class="col-md-12">
-        <h5>You currently have no posts</h5>
-        <img src="https://media.tenor.com/72TfkDBfeAsAAAAi/gjaja-dj.gif" alt="dj shiba gif" style="">
-      </div>
+    <div class="col-md-12 text-center">
+      <h5 style="color: #bc9cf7;">You currently have no posts ◕︵◕</h5>
+      <img src="https://i.gifer.com/XZ9.gif" alt="sad crying cat">
+      <p style="color: #bc9cf7; padding-top: 8px;">Start posting at ~Music🎵~!</p>
+    </div>
     {{/if}}
   </div>
 </div>
+
 <script src="/js/profile.js"></script>
