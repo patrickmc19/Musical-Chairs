@@ -35,8 +35,7 @@
         {{!-- <span class="navbar-text h1 me-auto" style="font-family: 'Handlee', cursive; color:rgb(73, 30, 102); text-shadow: 2px 2px rgb(33, 0, 85)">Musical Chairs</span> --}}
         <a class="btn btn-dark" href='/'>Home</a>
         {{#if isLoggedIn}}
-          <a class="btn btn-dark mx-2" href='/profile/{{user.id}}'>My Dashboard</a>
-          <a href='/post' class="btn btn-dark mx-2">Posts</a>
+          <a class="btn btn-dark mx-2" href='/profile/{{user.id}}'>My Profile</a>
           <a href='/music' class="btn btn-dark mx-2">Music🎵</a>
           <button class="btn btn-logout btn-dark mx-2">Log Out</button>
         {{else}}

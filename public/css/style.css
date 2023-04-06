@@ -66,7 +66,7 @@ body {
 
 /* title credits due here https://codepen.io/kajetan-orski/pen/YzQObKg */
 .logo-text {
-    font-size: 13vmin;
+    font-size: 10vmin;
 	display: flex;
 	position: fixed;
 	bottom: 10%;
@@ -120,15 +120,24 @@ body {
 /* for home page posts */
 .public-posts {
 	background: #21252900;
-	z-index: 9;
+	overflow: auto;
+	max-height: 65vh;
+	-ms-overflow-style: none;  /* IE and Edge */
+  	scrollbar-width: none;  /* Firefox */
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.public-posts::-webkit-scrollbar {
+	display: none;
+}
+  
 
 /* for home page header */
 #discover-h3 {
 	color: rgba(27, 0, 62, 0.798);
 	font-weight: bolder;
-	display: flex;
-	position: absolute;
+	font-family: 'Merriweather', serif;
+	display: block;
+	position: relative;
 	left: 10%;
 	font-size: 4vmin;
 	text-shadow: 0.3px 0.3px 3px #2f2140;
@@ -142,10 +151,19 @@ body {
 	font-size: 10px;
 }
 
+/* for rounded cards */
+
+
+/* for created by date */
+.created-line {
+	font-size: 10px;
+	color:rgba(111, 0, 255, 0.798)
+}
+
 /* for our title to stop animation if screen is small */
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
 	.logo-text {
 		font-size: 20px;
 		bottom: 5%;
 	}
-}
+} */
