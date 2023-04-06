@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../models");
+const { User, Post } = require("../models");
 const withAuth = require("../util/withAuth");
 
 // Get all posts 
@@ -14,12 +14,11 @@ router.get('/', withAuth, async (req, res) => {
         },
       ],
     });
-    // console.log(postData)
+
 
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    console.log(posts)
 
     // Pass serialized data and session flag into template
     res.render("home", {
@@ -79,14 +78,11 @@ router.get('/profile', withAuth, async (req, res) => {
       ],
     });
 
-    console.log(userHistory.Posts, "\n");
-    console.log(req.session.userId)
+
 
     // serialize data for template to read
     const posts = userHistory.Posts.map((post) => post.get({ plain: true }));
 
-    console.log(posts)
-    console.log("\n", userHistory.get({ plain: true }));
 
     // pass serialized data and session flag into template
     res.render('profile', {
@@ -100,77 +96,6 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 
-// router.get('/profile', withAuth, async (req, res) => {
-//   const isLoggedIn = true;
-//   res.render('profile', { title: 'My Profile', isLoggedIn })
-
-// });
-
-
-// post a comment
-
-router.post('/:id/comments', async (req, res) => {
-  try {
-    const postId = req.params.id;
-    const { comment } = req.body;
-    const userId = req.session.user_id;
-
-    if (!comment || !userId) {
-      return res.status(400).json({ message: 'Comment text and user ID are required' });
-    }
-
-    const newComment = await Comment.create({
-      comment,
-      user_id: userId,
-      post_id: postId,
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
-    });
-
-    res.status(200).json(newComment);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-// Allows us to edit a post in the post page (probably should delete this and add to music/post routes)
-
-router.put('/post/:id', async (req, res) => {
-  try {
-    const postData = await Post.update({
-      name: req.body.name,
-      description: req.body.description
-    }, {
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-
-    });
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
-    }
-
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Get to post page
-
-
-// router.get('/post', withAuth, async (req, res) => {
-//   res.render('post', { title: 'Posts' })
-// });
-
-
-// Takes us to specific user profile
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile/:id', withAuth, async (req, res) => {
@@ -207,69 +132,3 @@ router.get("/signup", (req, res) => {
 module.exports = router;
 
 
-
-
-
-
-
-
-
-
-
-
-// search for a specific post? 
-// router.get('/post', withAuth, async (req, res) => {
-//   try {
-
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
-//   }
-// });
-
-
-
-
-// router.put('/post/:id', withAuth, async (req, res) => {
-//   try {
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
-//   }
-// });
-
-// router.get('/post', withAuth, async (req, res) => {
-//   try {
-
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
-//   }
-// });
-
-// router.post('/post', withAuth, async (req, res) => {
-//   try {
-
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
-//   }
-// });
-
-// router.get('/post/:id', withAuth, async (req, res) => {
-//   try {
-
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
-//   }
-// });
-
-// router.put('/post/:id', withAuth, async (req, res) => {
-//   try {
-
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('⛔ Uh oh! An unexpected error occurred.');
-//   }
-// });

@@ -36,7 +36,7 @@ const sess = {
     db: sequelize
   })
 };
- 
+
 app.use(session(sess));
 
 // connect routes
@@ -51,7 +51,6 @@ sequelize
         console.error(err);
         return process.exit(1);
       }
-      console.log(`App listening on PORT ${PORT}`);
     });
   })
   .catch((err) => {
