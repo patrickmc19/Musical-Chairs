@@ -1,7 +1,5 @@
 // References HTML elements
 const postForm = document.getElementById('post-form');
-const postTitle = document.getElementById('post-title');
-const postContent = document.getElementById('post-content');
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const resultsContainer = document.getElementById('results-container');
@@ -33,7 +31,6 @@ postForm.addEventListener('submit', async (event) => {
         })
     });
     const data = await response.json();
-    console.log(data);
 
     const trackTitle = document.querySelector('#post-title');
     const postContent2 = document.querySelector('#post-content');
@@ -73,22 +70,17 @@ postForm.addEventListener('submit', async (event) => {
     selectedTracks = [];
     selectedTracksList.innerHTML = '';
 
-    // } catch (error) {
-    //     console.error(error);
-    // }
 });
 
 // Event listener for when the user searches for music 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const query = searchInput.value;
-    console.log(query);
 
     // Here we fetch the data from spotify's API and our back end to match the frontend search 
     const url = `/api/music/search?q=${query}`;
     // try {
     const response = await fetch(url);
-    console.log(response)
     const data = await response.json();
     resultsContainer.innerHTML = '';
     // Returns the first 3 tracks
@@ -175,10 +167,6 @@ searchForm.addEventListener('submit', async (event) => {
             newSongURL.value = selectedTrackURL;
             newSongArtist.value = selectedArtistName;
             newSongAlbum.value = selectedTrackAlbum;
-            // console.log('Added to post:', data.name);
         });
     });
-    // } catch (error) {
-    // console.error(error);
-    // }
 });

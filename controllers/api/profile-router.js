@@ -14,14 +14,9 @@ router.get('/', withAuth, async (req, res) => {
             ],
         });
 
-        console.log(userHistory.Posts, "\n");
-        console.log(req.session.userId)
-
         // serialize data for template to read
         const posts = userHistory.Posts.map((post) => post.get({ plain: true }));
 
-        console.log(posts)
-        console.log("\n", userHistory.get({ plain: true }));
 
         // pass serialized data and session flag into template
         res.render('profile', {
@@ -33,11 +28,6 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 });
-
-// router.get('/', withAuth, async (req, res) => {
-//     const isLoggedIn = true;
-//     res.render('profile', { title: 'My Dashboard', isLoggedIn })
-// });
 
 
 // getting specific post
