@@ -1,4 +1,4 @@
-const delFormHandler = async (event) => {
+const newFormHandler = async (event) => {
     event.preventDefault();
 
     const title = document.querySelector('#post-title').value.trim();
