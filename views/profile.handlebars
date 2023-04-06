@@ -1,19 +1,22 @@
 <div class="-posts container my-4">
   <div class="row my-5 post-list">
     {{#if posts.length}}
-      <div class="col-md-6 post-list">
-        <h3>Current Posts:</h3>
+      <div class="row col-md-12 post-list">
+        <h3>My Posts:</h3>
         {{#each posts}}
-          <div class="row mb-2">
-            <div class="col-md-8">
-              <h4>{{this.title}}</h4>
-              <p>{{this.content}}</p>
-            </div>
-            <div class="col-md-4">
-              <button class="btn btn-sm btn-danger" data-id="{{this.id}}">DELETE</button>
-            </div>
-          </div>
-        {{/each}}
+    <div class="col-md-4 col-sm-12">
+      <div class="p-card p-2 bg-light bg-opacity-25 text-white px-3 my-1 mx-1" id="profile-posts">
+        <h4 class="mt-2"><class="link-dark">{{this.title}}</a></h4>
+        <p class="d-block mb-5">{{this.content}}</p>
+        <p>Created on {{format_date this.date_created}}</p>
+        <p><a href="{{this.song_url}}" class="link-dark"><i class="fa fa-play-circle fa-xl" aria-hidden="true"></i></a></p>
+        <p style="color: rgb(39, 39, 39)">🎹 {{this.artist}} | <i class="fa fa-music" aria-hidden="true"></i> {{this.album}}</p>
+        <div class="col-md-4 text-right" id="profileDelete">
+          <button class="btn btn-sm btn-danger" id="profileDelete" data-id="{{this.id}}">DELETE</button>
+        </div>
+      </div>
+    </div>        
+    {{/each}}
       </div>
     {{else}}
       <div class="col-md-12">
