@@ -13,10 +13,6 @@ User.hasMany(Post, {
   onDelte: 'CASCADE',
 });
 
-Post.belongsTo(User, {
-  foreignKey: 'user_id'
-});
-
 Post.hasMany(Comment, {
   foreignKey: 'post_id',
   onDelete: 'CASCADE',
@@ -35,7 +31,6 @@ User.hasMany(Comment, {
 Comment.belongsTo(Post, {
   foreignKey: "user_id",
 });
-module.exports = { User, Post, Comment };
 
 Post.hasMany(Comment, {
   foreignKey: "post_id",
