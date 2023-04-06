@@ -1,5 +1,5 @@
 {{#if isLoggedIn}}
-<div class="container mt-5">
+<div class="container mt-5 music-post-container">
   <div class="row my-2">
     {{!-- search song form --}}
     <div class="col-md-3 col-sm-6 d-flex align-items-center justify-content-center">
@@ -8,9 +8,9 @@
           <label for="search-input">Search by Song or Artist:</label>
           <input type="text" id="search-input" class="form-control">
           <button type="submit" class="btn btn-primary">Search</button>
+          <img src="https://media.tenor.com/LuV3kuXwuq8AAAAC/band-rock.gif" alt="animal band gif" style="width: 98%; border-radius: 16%;">
         </div>
       </form>
-      
     </div>
 
     {{!-- results to song search --}}
@@ -44,10 +44,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Create Post</button>
       </form>
-    </div>
-    
-    {{!-- not sure what this is  --}}
-    <div id="post-container" class="d-flex justify-content-end mb-5">
     </div>
   </div>
 
