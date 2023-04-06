@@ -5,21 +5,26 @@ const withAuth = require("../../util/withAuth");
 // get all post and join with user data
 router.get('/', withAuth, async (req, res) => {
     try {
-        const postHistory = await Post.findAll({
+        const userHistory = await User.findOne({
+            where: { id: req.session.userId },
             include: [
                 {
-                    model: User,
-                    attributes: ["username"],
+                    model: Post
                 },
             ],
-            order: ["dateCreated", "DESC"],
         });
 
+        console.log(userHistory.Posts, "\n");
+        console.log(req.session.userId)
+
         // serialize data for template to read
-        const posts = postHistory.map((post) => post.get({ plain: true }));
+        const posts = userHistory.Posts.map((post) => post.get({ plain: true }));
+
+        console.log(posts)
+        console.log("\n", userHistory.get({ plain: true }));
 
         // pass serialized data and session flag into template
-        res.render("profile", {
+        res.render('profile', {
             title: 'My Dashboard',
             isLoggedIn: req.session.isLoggedIn,
             posts
@@ -28,6 +33,12 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 });
+
+// router.get('/', withAuth, async (req, res) => {
+//     const isLoggedIn = true;
+//     res.render('profile', { title: 'My Dashboard', isLoggedIn })
+// });
+
 
 // getting specific post
 router.get('/post/:id', async (req, res) => {
@@ -42,6 +53,7 @@ router.get('/post/:id', async (req, res) => {
         });
 
         const post = postHistory.get({ plain: true });
+        console.log(post)
 
         res.render('post', {
             ...post,
@@ -49,6 +61,24 @@ router.get('/post/:id', async (req, res) => {
         });
     } catch (err) {
         res.status(500).json(err);
+    }
+});
+
+// Create a post
+router.post("/", withAuth, async (req, res) => {
+    try {
+        const postData = await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            userId: req.session.userId,
+            song_url: req.body.song_url,
+            artist: req.body.artist,
+            album: req.body.album
+        });
+        return res.status(200).json(postData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
     }
 });
 
