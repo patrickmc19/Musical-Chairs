@@ -16,9 +16,9 @@
     {{#each posts as |post|}}
     <div class="col-md-4 col-sm-12">
       <div class="p-card p-2 bg-light bg-opacity-25 text-white rounded px-3 my-2 mx-1">
-        <h4 class="mt-2 text-center" style="font-family: 'Merriweather', serif;">{{post.title}}</h4>
-        <p class="text-end fw-light created-line">Created by {{post.user.username}} on {{format_date post.date_created}}</p>
-        <p class="d-block mb-5">{{post.content}}</p>
+        <h4 class="mt-2 text-center" style="font-family: 'Lora', serif; font-size: 30px; color: #bc9cf7;">{{post.title}}</h4>
+        <p class="text-end fw-light created-line">Posted by {{post.user.username}} on {{format_date post.date_created}}</p>
+        <p class="d-block mb-5" style="font-family: 'Lora', serif; color: #bc9cf7;">{{post.content}}</p>
         <p><a href="{{post.song_url}}" class="link-dark"><i class="fa fa-play-circle fa-xl" aria-hidden="true"></i></a></p>
         <p style="color: rgb(39, 39, 39)">🎹 {{post.artist}} | <i class="fa fa-music" aria-hidden="true"></i> {{post.album}}</p>
       </div>
