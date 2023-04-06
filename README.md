@@ -3,9 +3,9 @@
 ## User Story:
 
 ```
-AS a lover of music, 
+AS a lover of music,
 I WANT TO be able to share my favorite songs with others,
-SO THAT others can listen too. 
+SO THAT others can listen too.
 ```
 
 ## Acceptance Criteria
@@ -34,16 +34,16 @@ THEN I am able to remove a post from the public feed and my profile
 
 ## Functionality
 
-Upon opening, the site presents a public feed of all users' posts and the option to play a song posted by another user. 
+Upon opening, the site presents a public feed of all users' posts and the option to play a song posted by another user.
 ![HomePage](./images/HomePage.png)
 
 If I would like to play a song posted by myself or another user, I am taken to a media player with a 30 second preview of the song.
 ![MediaPlayer](./images/MediaPlayer.png)
 
-If I would like to post a new song, I can click the Music tab at the top of the navigation bar. I am then presented with a search bar that allows you to search by artist or track. I can click "Add to post" once I have selected a song, and share my thoughts on the song by filling out the "Content" portion of the form. 
+If I would like to post a new song, I can click the Music tab at the top of the navigation bar. I am then presented with a search bar that allows you to search by artist or track. I can click "Add to post" once I have selected a song, and share my thoughts on the song by filling out the "Content" portion of the form.
 ![CreatePost](./images/CreatePost.png)
 
-Once I have created a post, I a,m taken to my profile where I can see my most recent posts and all past posts. I have the option to delete posts under my profile page. 
+Once I have created a post, I a,m taken to my profile where I can see my most recent posts and all past posts. I have the option to delete posts under my profile page.
 ![MyProfile](./images/MyProfile.png)
 
 ## Resources
@@ -55,6 +55,7 @@ Bootstrap: https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.c
 Google Fonts: https://fonts.google.com/
 
 ## Site
+
 Deployed Site:
 
 Github URL: https://github.com/TheRealGeneParmesan/Project-2
