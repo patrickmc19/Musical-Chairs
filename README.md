@@ -25,8 +25,11 @@ Once you have created your post, you are taken to your personal profile where yo
 ## Credits
 
 Jeremy Racik
+
 Patrick McKnight
+
 Tiffany Tsai
+
 Shavana Puchta
 
 
