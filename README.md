@@ -1,4 +1,4 @@
-# Musical Chairs Project #2
+# Musical Chairs 
 
 ## User Story:
 
