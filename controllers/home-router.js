@@ -67,6 +67,46 @@ router.get('/music', withAuth, async (req, res) => {
 });
 
 
+// get all post and join with user data
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    const userHistory = await User.findOne({
+      where: { id: req.session.userId },
+      include: [
+        {
+          model: Post
+        },
+      ],
+    });
+
+    console.log(userHistory.Posts, "\n");
+    console.log(req.session.userId)
+
+    // serialize data for template to read
+    const posts = userHistory.Posts.map((post) => post.get({ plain: true }));
+
+    console.log(posts)
+    console.log("\n", userHistory.get({ plain: true }));
+
+    // pass serialized data and session flag into template
+    res.render('profile', {
+      title: 'My Dashboard',
+      isLoggedIn: req.session.isLoggedIn,
+      posts
+    });
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
+
+
+// router.get('/profile', withAuth, async (req, res) => {
+//   const isLoggedIn = true;
+//   res.render('profile', { title: 'My Profile', isLoggedIn })
+
+// });
+
+
 // post a comment
 
 router.post('/:id/comments', async (req, res) => {

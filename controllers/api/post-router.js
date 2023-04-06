@@ -5,8 +5,9 @@ const { Post, User } = require('../../models');
 const withAuth = require('../../util/withAuth');
 
 
-// Create a post
 
+
+// Create a post
 router.post("/", withAuth, async (req, res) => {
   try {
     const postData = await Post.create({
@@ -24,9 +25,29 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+router.post("/profile", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      userId: req.session.userId,
+      song_url: req.body.song_url,
+      artist: req.body.artist,
+      album: req.body.album
+    });
+    return res.status(200).json(postData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("⛔ Uh oh! An unexpected error occurred.");
+  }
+
+});
+
+
+
 // Get all posts
 
-router.get('/post', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [
@@ -51,7 +72,7 @@ router.get('/post', withAuth, async (req, res) => {
 
 // Get an individual post
 
-router.get("/post/:id", withAuth, async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk({
       where: {
@@ -73,7 +94,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
 
 
 // Update a post
-router.put('/post/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const postData = await Post.update({
       name: req.body.name,
@@ -100,7 +121,7 @@ router.put('/post/:id', async (req, res) => {
 
 // Delete a post
 
-router.delete("/post/:id", withAuth, async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
