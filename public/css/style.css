@@ -163,3 +163,8 @@ body {
 .music-post-container::-webkit-scrollbar {
 	display: none;
 }
+
+/* for profile post container */
+#profile-posts {
+	border-radius: 10%;
+}
