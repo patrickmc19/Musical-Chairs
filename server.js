@@ -47,6 +47,7 @@ sequelize
   .sync({ force: false })
   .then(() => {
     app.listen(PORT, (err) => {
+      console.log(`Server listening on port ${PORT}!`)
       if (err) {
         console.error(err);
         return process.exit(1);
