@@ -1,6 +1,10 @@
 * {
   font-family: "Merriweather", serif;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .btn {
   font-family: "Roboto", sans-serif;
 }
@@ -136,6 +140,7 @@ body {
   left: 10%;
   font-size: 4vmin;
   text-shadow: 0.3px 0.3px 3px #242424;
+  overflow-wrap: break-word;
 }
 
 /* search song results */
